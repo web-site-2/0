@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>رسالة من القلب</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ❤️ Falling Hearts Canvas -->
+  <canvas id="heartsCanvas"></canvas>
+
+  <!-- 🔐 Screen 1: Password -->
+  <section id="screen-password" class="screen active">
+    <div class="password-container">
+      <div class="lock-icon">🔐</div>
+      <p class="mystery-text">هناك رسالة تنتظرك...<br/><span>تحتاج فقط أن تعرف السر</span></p>
+      <div class="input-wrapper">
+        <input type="password" id="passwordInput" placeholder="✦ أدخل كلمة السر ✦" autocomplete="off" />
+        <button id="unlockBtn">فتح القلب</button>
+      </div>
+      <p id="errorMsg" class="error-msg">كلمة السر خاطئة، حاول مرة أخرى 💔</p>
+    </div>
+  </section>
+
+  <!-- ⏳ Screen 2: Countdown -->
+  <section id="screen-countdown" class="screen">
+    <div class="countdown-container">
+      <div class="section-header">
+        <div class="rose-icon">🌹</div>
+        <h2 class="section-title">معاً منذ...</h2>
+      </div>
+      <div class="countdown-grid">
+        <div class="count-card" id="cd-years">
+          <span class="count-number" id="years">0</span>
+          <span class="count-label">سنوات</span>
+        </div>
+        <div class="count-card" id="cd-months">
+          <span class="count-number" id="months">0</span>
+          <span class="count-label">أشهر</span>
+        </div>
+        <div class="count-card" id="cd-days">
+          <span class="count-number" id="days">0</span>
+          <span class="count-label">أيام</span>
+        </div>
+        <div class="count-card" id="cd-hours">
+          <span class="count-number" id="hours">0</span>
+          <span class="count-label">ساعات</span>
+        </div>
+        <div class="count-card" id="cd-minutes">
+          <span class="count-number" id="minutes">0</span>
+          <span class="count-label">دقائق</span>
+        </div>
+        <div class="count-card" id="cd-seconds">
+          <span class="count-number" id="seconds">0</span>
+          <span class="count-label">ثواني</span>
+        </div>
+      </div>
+      <p class="countdown-caption">كل لحظة معك تساوي الدنيا كلها ✨</p>
+      <button class="next-btn" id="countdownNext">التالي ❤️</button>
+    </div>
+  </section>
+
+  <!-- 💌 Screen 3: Love Messages (Step by Step) -->
+  <section id="screen-messages" class="screen">
+    <div class="messages-container">
+      <div class="message-card" id="msgCard">
+        <div class="msg-icon" id="msgIcon">💌</div>
+        <p class="msg-text" id="msgText"></p>
+      </div>
+      <div class="msg-progress">
+        <div class="progress-dots" id="progressDots"></div>
+      </div>
+      <button class="next-btn" id="msgNext">التالي 💫</button>
+    </div>
+  </section>
+
+  <!-- 🖼️ Screen 4: Photo Gallery -->
+  <section id="screen-gallery" class="screen">
+    <div class="gallery-container">
+      <div class="section-header">
+        <div class="rose-icon">📸</div>
+        <h2 class="section-title">لحظاتنا</h2>
+        <p class="section-sub">كل صورة تحكي قصة جميلة</p>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Gallery placeholders (replace src with real images) -->
+        <div class="gallery-item" style="--delay:0.1s">
+          <div class="photo-placeholder">
+            <span>🌹</span>
+            <p>أول لقاء</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--delay:0.2s">
+          <div class="photo-placeholder">
+            <span>☕</span>
+            <p>قهوة الصباح</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--delay:0.3s">
+          <div class="photo-placeholder">
+            <span>🌅</span>
+            <p>غروب جميل</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--delay:0.4s">
+          <div class="photo-placeholder">
+            <span>🎂</span>
+            <p>عيد ميلادك</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--delay:0.5s">
+          <div class="photo-placeholder">
+            <span>🎵</span>
+            <p>أغنيتنا</p>
+          </div>
+        </div>
+        <div class="gallery-item" style="--delay:0.6s">
+          <div class="photo-placeholder">
+            <span>💕</span>
+            <p>نحن معاً</p>
+          </div>
+        </div>
+      </div>
+      <button class="next-btn gallery-next-btn" id="galleryNext">التالي 🎶</button>
+    </div>
+  </section>
+
+  <!-- 🎶 Screen 5: Music -->
+  <section id="screen-music" class="screen">
+    <div class="music-container">
+      <div class="vinyl-wrapper">
+        <div class="vinyl" id="vinyl">
+          <div class="vinyl-center">🎵</div>
+        </div>
+        <div class="vinyl-glow"></div>
+      </div>
+      <h2 class="music-title">أغنيتنا</h2>
+      <p class="music-sub">الموسيقى التي تذكّرني بك دائماً</p>
+      <div class="music-controls">
+        <button class="play-btn" id="playBtn">
+          <span id="playIcon">▶</span>
+          <span id="playLabel">تشغيل</span>
+        </button>
+      </div>
+      <!-- Replace with your audio file -->
+      <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg" />
+      </audio>
+      <div class="music-waves" id="musicWaves">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <button class="next-btn" id="musicNext" style="margin-top:2rem">التالي 🌹</button>
+    </div>
+  </section>
+
+  <!-- 🎉 Screen 6: Final Scene -->
+  <section id="screen-final" class="screen">
+    <canvas id="confettiCanvas"></canvas>
+    <div class="final-container">
+      <div class="final-heart" id="finalHeart">❤️</div>
+      <h1 class="final-title" id="finalTitle"></h1>
+      <p class="final-msg" id="finalMsg"></p>
+      <div class="signature">
+        <span>بكل حب</span>
+        <div class="sig-hearts">❤️ 🌹 ❤️</div>
+      </div>
+      <button class="restart-btn" id="restartBtn">من البداية 🔄</button>
+    </div>
+  </section>
+
+  <!-- 🔊 Click Sound (inline beep via AudioContext) -->
+  <script src="script.js"></script>
+</body>
+</html>
